@@ -9,17 +9,18 @@ app.use(express.json())
 const dotenv = require('dotenv'); 
 dotenv.config()
  const port = process.env.PORT || 5000; 
+ const baseUrl = process.env.BASE_URL || 'http://localhost:'; 
 //  static files
 app.use(express.static(path.join(__dirname,'../inotebook/build')))
 app.get('x',(req,res)=>{
     res.sendFile(path.join(__dirname,'../inotebook/build/index.html'))
 })
 //  Available Routes
-app.use('/api/auth',require("./routes/auth"))
-app.use('/api/notes',require("./routes/notes"))
+app.use(`${baseUrl}/api/auth`,require("./routes/auth"))
+app.use(`${baseUrl}/api/notes`,require("./routes/notes"))
 app.listen(port,()=>{
     try {
-        console.log(`app are listen on http://localhost:${port}`)
+        console.log(`app are listen on${baseUrl}:${port}`);
     } catch (error) {
         console.log(`app not listen on port no ${port} `)
     }

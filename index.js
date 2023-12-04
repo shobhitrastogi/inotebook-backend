@@ -6,7 +6,9 @@ var cors= require('cors')
 app.use(cors())
 const path  =require('path')
 app.use(express.json())
- const port = 5000; 
+const dotenv = require('dotenv'); 
+dotenv.config()
+ const port = process.env.PORT || 5000; 
 //  static files
 app.use(express.static(path.join(__dirname,'../inotebook/build')))
 app.get('x',(req,res)=>{

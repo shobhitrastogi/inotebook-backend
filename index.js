@@ -12,7 +12,7 @@ dotenv.config()
  const baseUrl = process.env.BASE_URL || 'http://localhost:'; 
 //  static files
 app.use(express.static(path.join(__dirname,'../inotebook/build')))
-app.get('x',(req,res)=>{
+app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'../inotebook/build/index.html'))
 })
 //  Available Routes

@@ -3,7 +3,12 @@ const app = express();
 const connectToMongo = require("./db/db");
 connectToMongo();
 var cors= require('cors')
-app.use(cors())
+const corsOptions = {
+    origin: 'https://main--inquisitive-cajeta-8a1913.netlify.app/signup', // replace with your frontend domain
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  };
+  app.use(cors(corsOptions));
 const path  =require('path')
 app.use(express.json())
 const dotenv = require('dotenv'); 

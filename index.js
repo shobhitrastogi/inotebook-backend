@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname,'../inotebook/build')))
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'../inotebook/build/index.html'))
 })
+app.options('*', cors());
 //  Available Routes
 app.use(`${baseUrl}/api/auth`,require("./routes/auth"))
 app.use(`${baseUrl}/api/notes`,require("./routes/notes"))

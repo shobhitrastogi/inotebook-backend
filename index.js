@@ -2,14 +2,16 @@ const express = require("express")
 const app = express();
 const connectToMongo = require("./db/db");
 connectToMongo();
+const dotenv = require('dotenv');
+dotenv.config();
 var cors= require('cors')
 app.use(cors())
 const path  =require('path')
 app.use(express.json())
- const port = 5000; 
+ const port =process.env.PORT || 5000; 
 //  static files
 app.use(express.static(path.join(__dirname,'../inotebook/build')))
-app.get('x',(req,res)=>{
+app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname,'../inotebook/build/index.html'))
 })
 //  Available Routes
